@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-sm-12">
+            <h1><a href="http://www.damjan-murko.si/" class="title" >Zbrana dela Damjana Murka</a></h1>
+            </div>
+
+        </div>
+        <div class="row">
+        {% for i in n %}
+            <div class="col-sm-1">
+            <img src="http://eil.com/images/main/Dead-Or-Alive-You-Spin-Me-Round-310233.jpg" class="image pull-right">
+            </div>
+        {% endfor %}</div>
+
+        {% for post in posts %}
+            <div class="row">
+                <div class="shakira col-sm-2">
+                    <div class="shakira-container">
+                        {% if post.image_ugl %}<img src="{{post.image_ugl}}" class="image">{% endif %}
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>published: {{ post.published_date }}</p>
+
+                <p>{{ post.text|linebreaks }}</p>
+            </div>
+                </div>
+                {% endfor %}
+        </div>
+    </body>
+</html>
